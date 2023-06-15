@@ -1,6 +1,6 @@
 <?php
 
-namespace Alura\Doctrine\Entity;
+namespace Bernardo\Doctrine\Entity;
 
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
@@ -18,7 +18,7 @@ class Student
 
 public function __construct(
     #[Column]
-    public readonly string $nome
+    public  string $nome
 ){
 }
 
