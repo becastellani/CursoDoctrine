@@ -55,8 +55,15 @@ public function __construct(
     {
         return $this->courses;
     }
+
+        public function enrollInCourse(Course $course) : void
+        {
+            $this->courses->add
+        }
+    
 }
 
 
 $student = new Student('Berninha');
 $course = new Course('Doctrine');
+$student->enrollInCourse($course);
