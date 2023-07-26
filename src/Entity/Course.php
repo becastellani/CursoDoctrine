@@ -26,7 +26,15 @@ use Doctrine\ORM\Mapping\ManyToMany;
             $this->students = new ArrayCollection();
         }
 
+        public function addStudent(Student $student): void
+        {
+            if ($this->students->contains($student)) {
+                return;
+            }
 
+            $this->students->add($student);
+            $student->enrollInCourse($this);
+        }
         /**
          * @return Collection<Student>
          */

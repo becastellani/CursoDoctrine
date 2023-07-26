@@ -56,10 +56,15 @@ public function __construct(
         return $this->courses;
     }
 
-        public function enrollInCourse(Course $course) : void
-        {
-            $this->courses->add
+    public function enrollInCourse(Course $course): void
+    {
+        if ($this->courses->contains($course)) {
+            return;
         }
+
+        $this->courses->add($course);
+        $course->addStudent($this);
+    }
     
 }
 
