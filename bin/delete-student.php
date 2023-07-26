@@ -1,14 +1,15 @@
 <?php
 
+use Bernardo\Doctrine\Entity\Formation;
 use Bernardo\Doctrine\Entity\Student;
 use Bernardo\Doctrine\Helper\EntityManagerCreator;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
 $entityManager = EntityManagerCreator::createEntityManager();
-$student = $entityManager->find(Student::class, $argv[1]);
+$formation = $entityManager->find(Formation::class, $argv[1]);
 
-$entityManager->remove($student);
+$entityManager->remove($formation);
 $entityManager->flush();
 
 

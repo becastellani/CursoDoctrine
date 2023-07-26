@@ -1,5 +1,7 @@
 <?php
 
+use Bernardo\Doctrine\Entity\Course;
+use Bernardo\Doctrine\Entity\Formation;
 use Bernardo\Doctrine\Entity\Phone;
 use Bernardo\Doctrine\Entity\Student;
 use Bernardo\Doctrine\Helper\EntityManagerCreator;
@@ -9,10 +11,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $entityManager = EntityManagerCreator::createEntityManager();
 
-$student = new Student('Mario');
-$student->addPhone($phone1 = new Phone(Mask::maskPhoneNumber('19999050943')));
-$student->addPhone($phone2 = new Phone(Mask::maskPhoneNumber('22222222222')));
+$formation = new Formation($argv[1]);
 
-
-$entityManager->persist($student);
+$entityManager->persist($formation);
 $entityManager->flush();

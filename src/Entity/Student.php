@@ -28,12 +28,16 @@ class Student
     #[ManyToMany(targetEntity: Course::class, inversedBy: "students")]
     private Collection $courses;
 
+    #[ManyToMany(targetEntity: Formation::class, inversedBy: "students")]
+    private Collection $formations;
+
 public function __construct(
     #[Column]
     public readonly string $nome
 ){
     $this->phones = new ArrayCollection();
     $this->courses = new ArrayCollection();
+    $this->formations = new ArrayCollection();
 
 }
 
@@ -56,6 +60,7 @@ public function __construct(
         return $this->courses;
     }
 
+
     public function enrollInCourse(Course $course): void
     {
         if ($this->courses->contains($course)) {
@@ -65,10 +70,23 @@ public function __construct(
         $this->courses->add($course);
         $course->addStudent($this);
     }
+
+    public function formations():Collection
+    {
+        return $this->formations;
+    }
+
+    public function enrollInFormation(Formation $formation): void
+    {
+        if ($this->formations->contains($formation)) {
+            return;
+        }
+
+        $this->formations->add($formation);
+        $formation->addStudent($this);
     
+
+
 }
 
-
-$student = new Student('Berninha');
-$course = new Course('Doctrine');
-$student->enrollInCourse($course);
+}
